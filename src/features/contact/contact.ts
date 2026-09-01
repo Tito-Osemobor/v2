@@ -124,11 +124,10 @@ export function providerErrorStatus(
 
 export const buildContactEmail = (input: ContactInput) => ({
   replyTo: input.email,
-  subject: `Portfolio contact: ${input.subject}`,
+  subject: `${input.subject}`,
   text: [
     `Name: ${input.name}`,
-    `Reply email: ${input.email}`,
-    `Subject: ${input.subject}`,
+    `Reply to: ${input.email}`,
     "",
     input.message,
   ].join("\n"),
