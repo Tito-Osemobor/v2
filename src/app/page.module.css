@@ -1,0 +1,96 @@
+.section {
+  padding: clamp(2.25rem, 6vw, 3.75rem) 0;
+}
+
+.sectionHeading {
+  display: grid;
+  grid-template-columns: 6.25rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: baseline;
+  margin-bottom: 1.25rem;
+}
+
+.sectionHeading h2 {
+  margin: 0;
+  font-size: clamp(1.45rem, 4vw, 2rem);
+  font-weight: 620;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+
+.sectionHeading p {
+  max-width: 32rem;
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+}
+
+.sectionLabel {
+  color: var(--accent-strong);
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contactSection {
+  padding-bottom: 3.25rem;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.noScriptSocials {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.noScriptSocials a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    animation: reveal linear both;
+    animation-range: entry 5% cover 24%;
+    animation-timeline: view();
+  }
+  @keyframes reveal {
+    from {
+      opacity: 0.45;
+      transform: translateY(0.75rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (max-width: 40rem) {
+  .sectionHeading {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .footer {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 1.25rem 0 2rem;
+  }
+}

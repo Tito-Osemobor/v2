@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f7f4;
+  --surface: #ffffff;
+  --surface-soft: #eceeea;
+  --foreground: #15171a;
+  --muted: #5d636c;
+  --border: #d2d5d9;
+  --border-strong: #aeb4bc;
+  --accent: #2457e6;
+  --accent-strong: #1744c9;
+  --accent-soft: #e2e9ff;
+  --button-bg: #2457e6;
+  --button-hover: #1744c9;
+  --danger: #b42318;
+  --success: #067647;
+  --selection: #b8c8ff;
+  color-scheme: light;
+}
+
+.dark {
+  --background: #111317;
+  --surface: #181b21;
+  --surface-soft: #20242b;
+  --foreground: #f2f3f5;
+  --muted: #aeb4be;
+  --border: #343a43;
+  --border-strong: #555e6a;
+  --accent: #7398ff;
+  --accent-strong: #a9bdff;
+  --accent-soft: #1c2e5c;
+  --button-bg: #315bc9;
+  --button-hover: #2447a9;
+  --danger: #ff9b93;
+  --success: #75d4ab;
+  --selection: #314a91;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--background);
+  color: var(--foreground);
+  font-family:
+    "Instrument Sans Variable", "Instrument Sans", system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+::selection {
+  background: var(--selection);
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button,
+input,
+textarea {
+  font: inherit;
+}
+button,
+a,
+input,
+textarea,
+summary {
+  outline: none;
+}
+:focus-visible {
+  border-radius: 0.25rem;
+  box-shadow:
+    0 0 0 2px var(--background),
+    0 0 0 4px var(--accent);
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 60;
+  translate: 0 -180%;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  padding: 0.5rem 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 650;
+  transition: translate 160ms ease;
+}
+.skip-link:focus {
+  translate: 0;
+}
+.site-shell {
+  width: min(100% - 2rem, 46rem);
+  margin-inline: auto;
+  padding: 0 0 2rem;
+}
+
+@media (max-width: 40rem) {
+  .site-shell {
+    width: min(100% - 1.4rem, 46rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.00001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.00001ms !important;
+  }
+}
