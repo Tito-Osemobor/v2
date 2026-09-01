@@ -1,0 +1,334 @@
+.list {
+  border-bottom: 1px solid var(--border);
+}
+
+.companyRow {
+  position: relative;
+  display: block;
+  border-top: 1px solid var(--border);
+}
+
+.companyRow::before {
+  position: absolute;
+  top: 0.8rem;
+  bottom: 0.8rem;
+  left: -0.75rem;
+  width: 2px;
+  border-radius: 2px;
+  background: var(--company-accent);
+  opacity: 0;
+  transform: scaleY(0.5);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+  content: "";
+}
+
+.companyRow:hover::before,
+.companyRow:focus-within::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.summary,
+.staticSummary {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  gap: 0.85rem;
+  align-items: center;
+  min-height: 5.5rem;
+  padding: 1rem 0;
+}
+
+.staticSummary {
+  padding-right: 2.5rem;
+}
+
+.summary {
+  position: relative;
+  padding-right: 4.45rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.summary::-webkit-details-marker,
+.showMore::-webkit-details-marker {
+  display: none;
+}
+
+.companyRow:hover .role,
+.companyRow:focus-within .role {
+  color: var(--company-accent);
+}
+
+.logo,
+.monogram {
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  background: var(--surface);
+  object-fit: contain;
+}
+
+.monogram {
+  color: var(--accent-strong);
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+}
+
+.summaryCopy {
+  display: grid;
+  min-width: 0;
+  gap: 0.12rem;
+}
+
+.roleLine {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.role {
+  overflow: hidden;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color 160ms ease;
+}
+
+.currentBadge {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 0.32rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 38%, var(--border));
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  padding: 0.08rem 0.42rem;
+  font-size: 0.68rem;
+  font-weight: 720;
+  letter-spacing: 0.01em;
+}
+
+.currentBadge > span {
+  width: 0.36rem;
+  height: 0.36rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 0.18rem color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.company,
+.meta,
+.timelineDate {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.meta {
+  display: grid;
+  justify-items: end;
+  gap: 0.2rem;
+  white-space: nowrap;
+}
+
+.roleCount {
+  color: var(--accent-strong);
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+
+.chevron {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  display: grid;
+  width: 1.75rem;
+  height: 1.75rem;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--accent-strong);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease;
+  transform: translateY(-50%);
+}
+
+.companyLink {
+  position: absolute;
+  top: 2.75rem;
+  right: 0;
+  z-index: 2;
+  display: grid;
+  width: 1.75rem;
+  height: 1.75rem;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  color: var(--muted);
+  transform: translateY(-50%);
+  transition:
+    color 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.companyLinkWithJourney {
+  right: 2.2rem;
+}
+
+.companyLink:hover {
+  border-color: color-mix(in srgb, var(--company-accent) 45%, var(--border));
+  background: var(--surface);
+  color: var(--company-accent);
+  transform: translateY(calc(-50% - 1px));
+}
+
+.companyLink svg {
+  width: 0.9rem;
+}
+
+.chevron svg {
+  width: 0.9rem;
+}
+
+.journey[open] .chevron {
+  border-color: var(--accent);
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 0;
+  margin: 0 0 1.25rem 3.75rem;
+  padding: 0 0 0 1.2rem;
+  list-style: none;
+}
+
+.timeline::before {
+  position: absolute;
+  top: 0.45rem;
+  bottom: 0.65rem;
+  left: 0;
+  width: 1px;
+  background: var(--border-strong);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 300ms ease;
+  content: "";
+}
+
+.journey[open] .timeline::before {
+  transform: scaleY(1);
+}
+
+.timeline li {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  padding: 0.32rem 0 0.9rem;
+}
+
+.timelineDot {
+  position: absolute;
+  top: 0.68rem;
+  left: -1.43rem;
+  width: 0.48rem;
+  height: 0.48rem;
+  border: 2px solid var(--background);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.timelineRole {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.olderCompanies {
+  border-top: 1px solid var(--border);
+}
+
+.showMore {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.9rem 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 650;
+  cursor: pointer;
+  list-style: none;
+}
+
+.showMore > span:first-child {
+  margin-right: auto;
+}
+
+.previousCount {
+  display: grid;
+  min-width: 1.45rem;
+  height: 1.45rem;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--accent-strong);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.showMore:hover {
+  color: var(--accent-strong);
+}
+
+.showMore svg {
+  width: 1rem;
+  transition: transform 180ms ease;
+}
+
+.olderCompanies[open] > .showMore svg {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 40rem) {
+  .summary,
+  .staticSummary {
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    min-height: 5rem;
+  }
+
+  .summary {
+    padding-right: 4.2rem;
+  }
+
+  .meta {
+    grid-column: 2;
+    justify-items: start;
+  }
+
+  .companyLink {
+    top: 2.5rem;
+  }
+
+  .timeline {
+    margin-left: 3.7rem;
+  }
+
+  .timeline li {
+    grid-template-columns: 1fr;
+    gap: 0.12rem;
+  }
+}

@@ -1,0 +1,235 @@
+.dock {
+  position: fixed;
+  right: max(1.25rem, env(safe-area-inset-right));
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
+  z-index: 40;
+  display: grid;
+  justify-items: end;
+  gap: 0.55rem;
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    visibility 180ms;
+}
+
+.dockHidden {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(0.75rem);
+}
+
+.trigger {
+  display: grid;
+  width: 3.25rem;
+  height: 3.25rem;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--accent) 75%, white);
+  border-radius: 1rem;
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 0.75rem 2.5rem
+    color-mix(in srgb, var(--accent) 28%, transparent);
+  cursor: pointer;
+  transition:
+    border-radius 180ms ease,
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+.trigger:hover,
+.trigger[aria-expanded="true"] {
+  border-radius: 50%;
+  background: var(--accent-strong);
+  transform: translateY(-2px) rotate(3deg);
+}
+
+.trigger:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.trigger svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.panel,
+.footerControls {
+  border: 1px solid var(--border-strong);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--surface) 94%, transparent);
+  box-shadow: 0 0.75rem 2.5rem rgb(0 0 0 / 0.12);
+  backdrop-filter: blur(16px);
+}
+
+.panel {
+  width: 11.25rem;
+  padding: 0.42rem;
+  transform-origin: right bottom;
+}
+
+.controlItems,
+.controlGroup {
+  display: flex;
+}
+
+.dockItems,
+.dockItems .controlGroup {
+  flex-direction: column;
+}
+
+.dockItems,
+.dockItems .controlGroup {
+  width: 100%;
+}
+
+.dockItems {
+  gap: 0.32rem;
+}
+
+.dockItems .controlGroup {
+  gap: 0.18rem;
+}
+
+.action {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.65rem;
+  border: 0;
+  border-radius: 0.68rem;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition:
+    color 150ms ease,
+    background 150ms ease,
+    transform 150ms ease;
+}
+
+.dockItems .action {
+  width: 100%;
+  min-height: 2.5rem;
+  padding: 0.42rem 0.55rem;
+  text-align: left;
+}
+
+.action:hover,
+.action[aria-pressed="true"] {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  transform: translateX(2px);
+}
+
+.action:active {
+  transform: translateX(1px) scale(0.98);
+}
+
+.actionIcon {
+  display: grid;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: none;
+  place-items: center;
+}
+
+.actionIcon svg {
+  width: 1.08rem;
+  height: 1.08rem;
+}
+
+.actionLabel {
+  overflow: hidden;
+  font-size: 0.82rem;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.selectedIcon {
+  width: 0.85rem;
+  height: 0.85rem;
+  margin-left: auto;
+}
+
+.divider {
+  flex: none;
+  background: var(--border);
+}
+
+.dockItems > .divider {
+  width: calc(100% - 0.7rem);
+  height: 1px;
+  margin: 0.2rem auto;
+}
+
+.footerControls {
+  visibility: hidden;
+  padding: 0.3rem;
+  opacity: 0;
+  transform: translateY(0.5rem) scale(0.97);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    visibility 180ms;
+}
+
+.footerControlsVisible {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.footerItems,
+.footerItems .controlGroup {
+  align-items: center;
+}
+
+.footerItems {
+  gap: 0.2rem;
+}
+
+.footerItems .controlGroup {
+  gap: 0.12rem;
+}
+
+.footerItems > .divider {
+  width: 1px;
+  height: 1.45rem;
+  margin: 0 0.15rem;
+}
+
+.footerItems .action {
+  display: grid;
+  width: 2.3rem;
+  height: 2.3rem;
+  place-items: center;
+}
+
+.footerItems .action:hover,
+.footerItems .action[aria-pressed="true"] {
+  transform: translateY(-1px);
+}
+
+.footerItems .actionLabel,
+.footerItems .selectedIcon {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 40rem) {
+  .dock {
+    right: max(0.85rem, env(safe-area-inset-right));
+    bottom: max(0.85rem, env(safe-area-inset-bottom));
+  }
+
+  .panel {
+    width: 10.75rem;
+  }
+}

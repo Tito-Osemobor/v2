@@ -1,0 +1,118 @@
+.form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.form label {
+  display: grid;
+  gap: 0.38rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 650;
+}
+.control {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 0.55rem;
+  background: var(--surface);
+  color: var(--foreground);
+  padding: 0.75rem 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 450;
+  transition:
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+.control:hover {
+  border-color: var(--border-strong);
+}
+.control:focus-visible {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+.control[aria-invalid="true"] {
+  border-color: var(--danger);
+}
+textarea.control {
+  min-height: 9rem;
+  resize: vertical;
+}
+.fieldError {
+  color: var(--danger);
+  font-size: 0.75rem;
+  font-weight: 550;
+}
+.honeypot {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 2.75rem;
+}
+.status {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.success {
+  color: var(--success);
+}
+.validation,
+.retryable,
+.unavailable {
+  color: var(--danger);
+}
+.submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: 9.5rem;
+  border: 1px solid var(--button-bg);
+  border-radius: 999px;
+  background: var(--button-bg);
+  color: #fff;
+  padding: 0.68rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
+}
+.submit svg {
+  width: 1rem;
+}
+.submit:hover:not(:disabled) {
+  background: var(--button-hover);
+  transform: translateY(-1px);
+}
+.submit:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+@media (max-width: 40rem) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .submit {
+    width: 100%;
+  }
+}

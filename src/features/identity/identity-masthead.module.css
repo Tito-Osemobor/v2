@@ -1,0 +1,96 @@
+.masthead {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 3.5rem;
+  padding: clamp(1.5rem, 5vw, 2.5rem) 0 clamp(2.5rem, 7vw, 4rem);
+}
+
+.portraitFrame {
+  position: relative;
+  flex: none;
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.portraitFrame::after {
+  position: absolute;
+  inset: -0.2rem;
+  z-index: -1;
+  border: 1px solid color-mix(in srgb, var(--accent) 46%, transparent);
+  border-radius: 0.9rem;
+  opacity: 0;
+  transform: rotate(-5deg) scale(0.95);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+  content: "";
+}
+
+.masthead:hover .portraitFrame::after {
+  opacity: 1;
+  transform: rotate(-3deg) scale(1);
+}
+
+.portrait,
+.fallback {
+  display: grid;
+  width: 3.5rem;
+  height: 3.5rem;
+  place-items: center;
+  border: 1px solid var(--border-strong);
+  border-radius: 0.75rem;
+  background: var(--accent-soft);
+  object-fit: cover;
+  transition: transform 180ms ease;
+}
+
+.masthead:hover .portrait,
+.masthead:hover .fallback {
+  transform: translateY(-2px);
+}
+
+.fallback {
+  color: var(--accent-strong);
+  font-size: 0.8rem;
+  font-weight: 750;
+  letter-spacing: 0.05em;
+}
+
+.name {
+  margin: 0;
+  font-size: clamp(1.4rem, 4vw, 1.75rem);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0.32rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.separator {
+  width: 0.24rem;
+  height: 0.24rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+@media (max-width: 40rem) {
+  .portraitFrame,
+  .portrait,
+  .fallback {
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+
+  .details {
+    gap: 0.42rem;
+    font-size: 0.875rem;
+  }
+}
